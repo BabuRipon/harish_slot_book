@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -66,3 +67,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+=======
+# some-todo-task
+this is simple todo task for react bootcamp
+
+
+Here i make a todo-app where i take the input from input element and fetch that data into a array and show list that array elememt and you delete that array element which you are clicked.
+>>>>>>> a0d9cad8920ab377f2a1c80c1d9d643d8ad95e62
