@@ -1,0 +1,11 @@
+.Container{
+    width:70%;
+    height:250px;
+    background-color:#8395A7;
+    margin:20px auto;
+    padding:50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
