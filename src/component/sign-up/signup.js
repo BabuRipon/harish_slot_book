@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import {withRouter} from 'react-router-dom';
 import axios from 'axios'
 
 const SignUp=(props)=>{
@@ -6,6 +7,8 @@ const SignUp=(props)=>{
     const [name,setName]=useState('');
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
+    const [error,setError]=useState(false);
+    const [errorMessage,seterrorMessage]=useState('')
 
     const onSubmitHandler=(event)=>{
          event.preventDefault();
@@ -15,9 +18,27 @@ const SignUp=(props)=>{
             returnSecureToken:true
          }
 
-  
+     axios.post('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDW21PD3MW3uoNhLUnknEz6g3k9_mTNu9g',userData)
+       .then(res=>{
+        //    console.log(res);
+           setError(false)
+           seterrorMessage('');
+           setName('');
+           setEmail('');
+           setPassword('');
+           props.history.push('/sign-in')
+       })
+       .catch(err=>{
+           seterrorMessage(err.response.data.error.message);
+           setError(true);
+           setName('');
+           setEmail('');
+           setPassword('');
+       })
 
     }
+
+    const Error=error?<p style={{color:'red'}}>{errorMessage}</p>:null;
 
     return(
         <div className="container mt-3">
@@ -41,6 +62,7 @@ const SignUp=(props)=>{
                         value={email}
                         onChange={(event)=>setEmail(event.target.value)}
                         />
+                        {Error}
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">password</label>
@@ -59,4 +81,4 @@ const SignUp=(props)=>{
     )
 }
 
-export default SignUp;
+export default withRouter(SignUp);
